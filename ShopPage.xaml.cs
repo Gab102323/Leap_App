@@ -26,9 +26,13 @@ public partial class ShopPage : ContentPage
             ShopItems = new ObservableCollection<ShopItem>
         {
             new ShopItem { Name = "Power Boost", Image="power_boost.png", Price="500 Coins", BuyCommand = new Command(() => BuyItem("Power Boost")) },
-            new ShopItem { Name = "New Skin", Image="skin.png", Price="800 Coins", BuyCommand = new Command(() => BuyItem("New Skin")) },
-            new ShopItem { Name = "XP Booster", Image="xp_booster.png", Price="300 Coins", BuyCommand = new Command(() => BuyItem("XP Booster")) },
-            new ShopItem { Name = "Speed Boost", Image="speed_boost.png", Price="600 Coins", BuyCommand = new Command(() => BuyItem("Speed Boost")) }
+            new ShopItem { Name = "Super Power Boost", Image="power_boost.png", Price="800 Coins", BuyCommand = new Command(() => BuyItem("Super Power Boost")) },
+            new ShopItem { Name = "normal Skin", Image="cloth.png", Price="300 Coins", BuyCommand = new Command(() => BuyItem("normal Skin")) },
+            new ShopItem { Name = "rare skin", Image="cloth.png", Price="600 Coins", BuyCommand = new Command(() => BuyItem("rare Skin")) },
+            new ShopItem { Name = "100 Diamond", Image="diamond2.png", Price="50 coins", BuyCommand = new Command(() => BuyItem("100 Diamond")) },
+            new ShopItem { Name = "200 Diamond", Image="diamond2.png", Price="100 Coins", BuyCommand = new Command(() => BuyItem("200 Diamond")) },
+            new ShopItem { Name = "100 Coins", Image="coin_icon.png", Price="50 Coins", BuyCommand = new Command(() => BuyItem("100 Coins")) },
+            new ShopItem { Name = "200 Coins", Image="coin_icon.png", Price="100 Coins", BuyCommand = new Command(() => BuyItem("200 Coins")) }
         };
         }
 
