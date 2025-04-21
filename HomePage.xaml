@@ -4,30 +4,42 @@
 
     <Grid RowDefinitions="Auto,*,Auto">
         <!-- Top Bar -->
-        <StackLayout Orientation="Horizontal" Padding="10" HorizontalOptions="Fill">
-            <Image Source="profile_icon.png" WidthRequest="40" HeightRequest="40"/>
-            <Label Text="0" VerticalOptions="Center" />
-            <Image Source="coin_icon.png" WidthRequest="30" HeightRequest="30"/>
-            <Label Text="0" VerticalOptions="Center"/>
-            <Image Source="diamond_icon.png" WidthRequest="30" HeightRequest="30"/>
+        <StackLayout Orientation="Horizontal" Padding="5" HorizontalOptions="FillAndExpand" BackgroundColor="LightGray">
+            <Image Source="profile_icon.png" WidthRequest="40" HeightRequest="40" VerticalOptions="Center"/>
+            <Label x:Name="UsernameLabel" Text="Guest" FontSize="Medium" FontAttributes="Bold" VerticalOptions="Center" />
         </StackLayout>
 
         <!-- Main Content -->
-        <StackLayout Grid.Row="1" Padding="20">
-            <Label Text="LESSON 1" FontSize="24" HorizontalOptions="Center"/>
-            <Image Source="golf_flag.png" HorizontalOptions="Center" WidthRequest="200"/>
+        <StackLayout Grid.Row="1" Padding="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <Label Text="LESSON 1" FontSize="24" FontAttributes="Bold" HorizontalOptions="Center" Margin="0"/>
+            <Image x:Name="FlagImage" Source="red_flag.png" WidthRequest="200" HeightRequest="200" HorizontalOptions="Start" Margin="0"/>
+ 
 
-            <Button Text="Mini Game Mode" BackgroundColor="Gray" Margin="5"/>
-            <Button Text="Campaign Mode" BackgroundColor="Gray" Margin="5"/>
-        </StackLayout>
+        <!-- Mini Game and Campaign Icons -->
+			<Grid ColumnDefinitions="*,*" HorizontalOptions="Center" Margin="0">
+				<!-- Mini Game Icon -->
+				<ImageButton Source="mini_game.png" Grid.Column="0" WidthRequest="100" HeightRequest="60" BackgroundColor="LightGray" Margin="0" Clicked="GoToMiniGame"/>
+				<!-- Campaign Mode Icon -->
+				<ImageButton Source="red_flag.png" Grid.Column="1" WidthRequest="100" HeightRequest="60" BackgroundColor="LightGray" Margin="0" Clicked="GoToCampaign"/>
+			</Grid>
+		</StackLayout>
 
-        <!-- Bottom Navigation -->
-        <StackLayout Grid.Row="2" Orientation="Horizontal" Padding="10" BackgroundColor="LightGray">
-            <Button Text="Home" Clicked="GoToHome"/>
-            <Button Text="Shop" Clicked="GoToShop"/>
-            <Button Text="Objectives" Clicked="GoToObjectives"/>
-            <Button Text="Leaderboard" Clicked="GoToLeaderboard"/>
-        </StackLayout>
-
+		<!-- Bottom Navigation -->
+		<Grid Grid.Row="2" ColumnDefinitions="*,*,*,*" BackgroundColor="LightGray" Padding="0">
+			<ImageButton Source="home_icon.png" Grid.Column="0" HorizontalOptions="Center" Margin="0" Clicked="GoToHome"/>
+			<ImageButton Source="shop_icon.png" Grid.Column="1" HorizontalOptions="Center" Margin="0" Clicked="GoToShop"/>
+			<ImageButton Source="objectives_icon.png" Grid.Column="2" HorizontalOptions="Center" Margin="0" Clicked="GoToObjectives"/>
+			<ImageButton Source="leaderboard_icon.png" Grid.Column="3" HorizontalOptions="Center" Margin="0" Clicked="GoToLeaderboard"/>
+		</Grid>
+        <!-- Profile Icon -->
+        <ImageButton
+     Source="profile_icon.png"
+     BackgroundColor="Transparent"
+     WidthRequest="40"
+     HeightRequest="40"
+     HorizontalOptions="End"
+     VerticalOptions="Start"
+     Clicked="OnProfileIconClicked" />
+        
     </Grid>
 </ContentPage>

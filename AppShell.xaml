@@ -3,38 +3,37 @@
        xmlns:views="clr-namespace:Leap_App.Views"
        x:Class="Leap_App.AppShell">
     <TabBar>
-        <ShellContent Title="Home" ContentTemplate="{DataTemplate views:HomePage}" />
-        <ShellContent Title="Leaderboard" ContentTemplate="{DataTemplate views:LeaderboardPage}" />
-        <ShellContent Title="Objectives" ContentTemplate="{DataTemplate views:ObjectivePage}" />
-        <ShellContent Title="Shop" ContentTemplate="{DataTemplate views:ShopPage}" />
+        <ShellContent Route="SignInPage" ContentTemplate="{DataTemplate views:SignInPage}" />
+        <ShellContent Route="HomePage_Main" ContentTemplate="{DataTemplate views:HomePage}" />
+        <ShellContent Route="HomePage_Tab1" ContentTemplate="{DataTemplate views:HomePage}" />
+        <ShellContent Title="Leaderboard" Route="LeaderboardPage_Tab1" ContentTemplate="{DataTemplate views:LeaderboardPage}" />
+        <ShellContent Title="Objectives" Route="ObjectivePage_Tab1" ContentTemplate="{DataTemplate views:ObjectivePage}" />
+        <ShellContent Title="Shop" Route="ShopPage_Tab1" ContentTemplate="{DataTemplate views:ShopPage}" />
     </TabBar>
-    
-    <TabBar>
 
+    <TabBar>
         <ShellContent 
         Title="Home"
         Icon="home_icon.png"
-        Route="HomePage"
+        Route="HomePage_Tab2"
         ContentTemplate="{DataTemplate views:HomePage}" />
 
         <ShellContent 
         Title="Shop"
         Icon="shop_icon.png"
-        Route="ShopPage"
+        Route="ShopPage_Tab2"
         ContentTemplate="{DataTemplate views:ShopPage}" />
 
         <ShellContent 
         Title="Objectives"
         Icon="objectives_icon.png"
-        Route="ObjectivePage"
+        Route="ObjectivePage_Tab2"
         ContentTemplate="{DataTemplate views:ObjectivePage}" />
 
         <ShellContent 
         Title="Leaderboard"
         Icon="leaderboard_icon.png"
-        Route="LeaderboardPage"
+        Route="LeaderboardPage_Tab2"
         ContentTemplate="{DataTemplate views:LeaderboardPage}" />
     </TabBar>
-
 </Shell>
-    
