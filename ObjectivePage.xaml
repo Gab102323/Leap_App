@@ -1,18 +1,52 @@
-<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Leap_App.ObjectivesPage">
-    
-    <StackLayout Padding="20">
-        <Label Text="Objectives" FontSize="24" FontAttributes="Bold"/>
-        <CollectionView>
-            <CollectionView.ItemsSource>
-                <x:Array Type="{x:Type x:String}">
-                    <x:String>Complete Lesson 1</x:String>
-                    <x:String>Earn 100 points</x:String>
-                    <x:String>Unlock new mode</x:String>
-                </x:Array>
-            </CollectionView.ItemsSource>
-        </CollectionView>
-    </StackLayout>
+             x:Class="Leap_App.Views.ObjectivePage"
+             BackgroundColor="White">
+    <Grid RowDefinitions="Auto,*,Auto" Padding="10">
+        <!-- Header -->
+        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="Start">
+            <Image Source="profile_icon.png" WidthRequest="40" HeightRequest="40" VerticalOptions="Center" />
+            <Label Text="OBJECTIVES" FontSize="24" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" />
+            <StackLayout Orientation="Horizontal" HorizontalOptions="End" VerticalOptions="Center">
+                <Image Source="coin_icon.png" WidthRequest="30" HeightRequest="30" />
+                <Label Text="1000" FontSize="16" VerticalOptions="Center" />
+                <Image Source="gem_icon.png" WidthRequest="30" HeightRequest="30" Margin="10,0,0,0" />
+                <Label Text="100" FontSize="16" VerticalOptions="Center" />
+            </StackLayout>
+        </StackLayout>
+
+        <!-- Quests Section -->
+        <StackLayout Grid.Row="1" Padding="10">
+            <Label Text="QUESTS" FontSize="20" FontAttributes="Bold" />
+            <StackLayout Orientation="Horizontal" Padding="5" BackgroundColor="#F0F0F0" Margin="0,5,0,5">
+                <Label Text="Complete 5 tasks" FontSize="16" VerticalOptions="Center" />
+                <Button Text="CLAIM" BackgroundColor="#FFD700" HorizontalOptions="End" />
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" Padding="5" BackgroundColor="#F0F0F0" Margin="0,5,0,5">
+                <Label Text="Earn 100 coins" FontSize="16" VerticalOptions="Center" />
+                <Button Text="CLAIM" BackgroundColor="#FFD700" HorizontalOptions="End" />
+            </StackLayout>
+        </StackLayout>
+
+        <!-- Achievements Section -->
+        <StackLayout Grid.Row="1" Padding="10" Margin="0,100,0,0">
+            <Label Text="ACHIEVEMENTS" FontSize="20" FontAttributes="Bold" />
+            <StackLayout Orientation="Horizontal" Padding="5" BackgroundColor="#F0F0F0" Margin="0,5,0,5">
+                <Label Text="Complete 10 tasks" FontSize="16" VerticalOptions="Center" />
+                <Button Text="CLAIM" BackgroundColor="#FFD700" HorizontalOptions="End" />
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" Padding="5" BackgroundColor="#F0F0F0" Margin="0,5,0,5">
+                <Label Text="Earn 500 coins" FontSize="16" VerticalOptions="Center" />
+                <Button Text="CLAIM" BackgroundColor="#FFD700" HorizontalOptions="End" />
+            </StackLayout>
+        </StackLayout>
+
+        <!-- Bottom Navigation -->
+        <Grid Grid.Row="2" ColumnDefinitions="*,*,*,*" BackgroundColor="#0D0202" Padding="0">
+            <ImageButton Source="home_icon.png" Grid.Column="0" HorizontalOptions="Center" Clicked="GoToHome" />
+            <ImageButton Source="shop_icon.png" Grid.Column="1" HorizontalOptions="Center" Clicked="GoToShop" />
+            <ImageButton Source="objectives_icon.png" Grid.Column="2" HorizontalOptions="Center" Clicked="GoToObjectives" />
+            <ImageButton Source="leaderboard_icon.png" Grid.Column="3" HorizontalOptions="Center" Clicked="GoToLeaderboard" />
+        </Grid>
+    </Grid>
 </ContentPage>

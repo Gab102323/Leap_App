@@ -4,30 +4,69 @@
 
     <Grid RowDefinitions="Auto,*,Auto">
         <!-- Top Bar -->
-        <StackLayout Orientation="Horizontal" Padding="10" HorizontalOptions="Fill">
-            <Image Source="profile_icon.png" WidthRequest="40" HeightRequest="40"/>
-            <Label Text="0" VerticalOptions="Center" />
-            <Image Source="coin_icon.png" WidthRequest="30" HeightRequest="30"/>
-            <Label Text="0" VerticalOptions="Center"/>
-            <Image Source="diamond_icon.png" WidthRequest="30" HeightRequest="30"/>
-        </StackLayout>
+        <Grid ColumnDefinitions="Auto,*,Auto,Auto,Auto" Padding="10" BackgroundColor="LightGray">
+            <!-- Profile Icon -->
+            <ImageButton Source="profile_icon.png" WidthRequest="40" HeightRequest="40" Clicked="OnProfileClicked" />
+
+            <!-- Coins -->
+            <StackLayout Orientation="Horizontal" Grid.Column="2" HorizontalOptions="Center">
+                <Image Source="coins_icon.png" WidthRequest="24" HeightRequest="24" />
+                <Label x:Name="CoinsLabel" Text="0" VerticalOptions="Center" />
+            </StackLayout>
+
+            <!-- Diamonds -->
+            <StackLayout Orientation="Horizontal" Grid.Column="3" HorizontalOptions="Center">
+                <Image Source="diamonds_icon.png" WidthRequest="24" HeightRequest="24" />
+                <Label x:Name="DiamondsLabel" Text="0" VerticalOptions="Center" />
+            </StackLayout>
+
+            <!-- Settings Icon -->
+            <ImageButton Source="settings_icon.png" Grid.Column="4" WidthRequest="40" HeightRequest="40" Clicked="OnSettingsClicked" />
+        </Grid>
 
         <!-- Main Content -->
-        <StackLayout Grid.Row="1" Padding="20">
-            <Label Text="LESSON 1" FontSize="24" HorizontalOptions="Center"/>
-            <Image Source="golf_flag.png" HorizontalOptions="Center" WidthRequest="200"/>
+        <StackLayout Grid.Row="1" Padding="10">
+            <Label Text="LESSON 1" FontSize="24" FontAttributes="Bold" HorizontalOptions="Center" />
 
-            <Button Text="Mini Game Mode" BackgroundColor="Gray" Margin="5"/>
-            <Button Text="Campaign Mode" BackgroundColor="Gray" Margin="5"/>
+            <CollectionView x:Name="LevelsCollectionView" ItemsSource="{Binding Levels}">
+                <!-- Define item template here -->
+            </CollectionView>
+            
+            <!-- Swipeable Levels -->
+            <ScrollView Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                <StackLayout Orientation="Horizontal" Spacing="20" Padding="10">
+                    <!-- Generate 50 levels dynamically -->
+                    <BindableLayout.ItemsSource>
+                        <x:Array Type="{x:Type x:Int32}">
+                            <!-- Array of 50 levels -->
+                            <x:Int32>1</x:Int32>
+                            <x:Int32>2</x:Int32>
+                            <!-- Add up to 50 -->
+                        </x:Array>
+                    </BindableLayout.ItemsSource>
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <!-- Circle -->
+                                <Frame WidthRequest="50" HeightRequest="50" CornerRadius="25" BackgroundColor="LightGray" />
+                                <!-- Flag -->
+                                <Image Source="flag_icon.png" IsVisible="{Binding IsCurrentLevel}" />
+                            </Grid>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </StackLayout>
+            </ScrollView>
+
+            <!-- Play Button -->
+            <Button x:Name="PlayButton" Text="Play" IsVisible="False" Clicked="OnPlayClicked" />
         </StackLayout>
 
         <!-- Bottom Navigation -->
-        <StackLayout Grid.Row="2" Orientation="Horizontal" Padding="10" BackgroundColor="LightGray">
-            <Button Text="Home" Clicked="GoToHome"/>
-            <Button Text="Shop" Clicked="GoToShop"/>
-            <Button Text="Objectives" Clicked="GoToObjectives"/>
-            <Button Text="Leaderboard" Clicked="GoToLeaderboard"/>
-        </StackLayout>
-
+        <Grid Grid.Row="2" ColumnDefinitions="*,*,*,*" BackgroundColor="#0D0202">
+            <ImageButton Source="home_icon.png" Grid.Column="0" WidthRequest="30" HeightRequest="30" Clicked="GoToHome" />
+            <ImageButton Source="shop_icon.png" Grid.Column="1" WidthRequest="30" HeightRequest="30" Clicked="GoToShop" />
+            <ImageButton Source="objectives_icon.png" Grid.Column="2" WidthRequest="30" HeightRequest="30" Clicked="GoToObjectives" />
+            <ImageButton Source="leaderboard_icon.png" Grid.Column="3" WidthRequest="30" HeightRequest="30" Clicked="GoToLeaderboard" />
+        </Grid>
     </Grid>
 </ContentPage>
