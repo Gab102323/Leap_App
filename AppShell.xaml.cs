@@ -17,5 +17,6 @@ namespace Leap_App
             Routing.RegisterRoute("ShopPage_Tab1", typeof(ShopPage));
             Routing.RegisterRoute("LeaderboardPage_Tab1", typeof(LeaderboardPage));
         }
+
     }
 }
