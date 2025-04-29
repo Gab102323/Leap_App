@@ -1,16 +1,11 @@
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+  <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Leap_App.Views.SignInPage"
-             BackgroundColor="Transparent">
-    <Grid>
-        <!-- Background -->
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-
-            <Button Text="Sign In" Clicked="OnSignInClicked" />
-            <Button Text="Sign Up" Clicked="OnSignUpClicked" />
-        </StackLayout>
-    </Grid>
+             x:Class="Leap_App.Views.SignInPage">
+    <StackLayout Padding="20" Spacing="15" VerticalOptions="Center">
+        <Label Text="Sign In" FontSize="24" FontAttributes="Bold" HorizontalOptions="Center" />
+        <Entry x:Name="UsernameEntry" Placeholder="Username" />
+        <Entry x:Name="PasswordEntry" Placeholder="Password" IsPassword="True" />
+        <Button Text="Sign In" Clicked="OnSignInClicked" />
+        <Button Text="Sign Up" Clicked="OnSignUpClicked" />
+    </StackLayout>
 </ContentPage>

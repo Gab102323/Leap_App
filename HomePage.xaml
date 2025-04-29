@@ -1,40 +1,37 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Leap_App.Views.HomePage">
-
     <Grid RowDefinitions="Auto,*,Auto">
         <!-- Top Bar -->
-        <StackLayout Orientation="Horizontal" Padding="5" HorizontalOptions="FillAndExpand" BackgroundColor="LightGray">
-            <Image Source="profile_icon.png" WidthRequest="40" HeightRequest="40" VerticalOptions="Center"/>
+        <Grid ColumnDefinitions="Auto,*,Auto,Auto" Padding="5" BackgroundColor="LightGray">
+            <Image Source="profile_icon.png" WidthRequest="40" HeightRequest="40" VerticalOptions="Center" />
             <Label x:Name="UsernameLabel" Text="Guest" FontSize="Medium" FontAttributes="Bold" VerticalOptions="Center" />
-        </StackLayout>
 
             <!-- Diamonds -->
-            <StackLayout Orientation="Horizontal" Grid.Column="3" HorizontalOptions="Center">
+            <StackLayout Orientation="Horizontal" Grid.Column="2" HorizontalOptions="Center">
                 <Image Source="diamonds_icon.png" WidthRequest="24" HeightRequest="24" />
                 <Label x:Name="DiamondsLabel" Text="0" VerticalOptions="Center" />
             </StackLayout>
 
             <!-- Settings Icon -->
-            <ImageButton Source="settings_icon.png" Grid.Column="4" WidthRequest="40" HeightRequest="40" Clicked="OnSettingsClicked" />
+            <ImageButton Source="settings_icon.png" Grid.Column="3" WidthRequest="40" HeightRequest="40" Clicked="OnSettingsClicked" />
         </Grid>
 
         <!-- Main Content -->
         <StackLayout Grid.Row="1" Padding="20">
-            <Label Text="LESSON 1" FontSize="24" HorizontalOptions="Center"/>
-            <Image Source="golf_flag.png" HorizontalOptions="Center" WidthRequest="200"/>
+            <Label Text="LESSON 1" FontSize="24" HorizontalOptions="Center" />
+            <Image Source="red_flag.png" HorizontalOptions="Center" WidthRequest="200" />
 
-            <Button Text="Mini Game Mode" BackgroundColor="Gray" Margin="5"/>
-            <Button Text="Campaign Mode" BackgroundColor="Gray" Margin="5"/>
+            <Button Text="Mini Game Mode" BackgroundColor="Gray" Margin="5" />
+            <Button Text="Campaign Mode" BackgroundColor="Gray" Margin="5" />
         </StackLayout>
 
         <!-- Bottom Navigation -->
-        <StackLayout Grid.Row="2" Orientation="Horizontal" Padding="10" BackgroundColor="LightGray">
-            <Button Text="Home" Clicked="GoToHome"/>
-            <Button Text="Shop" Clicked="GoToShop"/>
-            <Button Text="Objectives" Clicked="GoToObjectives"/>
-            <Button Text="Leaderboard" Clicked="GoToLeaderboard"/>
-        </StackLayout>
-
+        <Grid Grid.Row="2" ColumnDefinitions="*,*,*,*" BackgroundColor="LightGray" Padding="10">
+            <Button Text="Home" Grid.Column="0" Clicked="GoToHome" />
+            <Button Text="Shop" Grid.Column="1" Clicked="GoToShop" />
+            <Button Text="Objectives" Grid.Column="2" Clicked="GoToObjectives" />
+            <Button Text="Leaderboard" Grid.Column="3" Clicked="GoToLeaderboard" />
+        </Grid>
     </Grid>
 </ContentPage>

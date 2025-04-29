@@ -1,37 +1,46 @@
-﻿using Microsoft.Maui.Controls;
+﻿using Leap_App.Services;
 
 namespace Leap_App.Views
 {
-
     public partial class SignInPage : ContentPage
     {
         public SignInPage()
         {
             InitializeComponent();
         }
+        private async void OnSignUpClicked(object sender, EventArgs e)
+        {
+            // Navigate to the SignUpPage
+            await Shell.Current.GoToAsync("//SignUpPage");
+        }
 
         private async void OnSignInClicked(object sender, EventArgs e)
         {
-            string savedUsername = Preferences.Get("Username", string.Empty);
-            string savedPassword = Preferences.Get("Password", string.Empty);
+            string username = UsernameEntry.Text;
+            string password = PasswordEntry.Text;
 
-            if (UsernameEntry.Text == savedUsername && PasswordEntry.Text == savedPassword)
+            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
             {
-                Preferences.Set("IsLoggedIn", true); // Save login state
+                await DisplayAlert("Error", "Please enter both username and password.", "OK");
+                return;
+            }
 
-                await DisplayAlert("Welcome", $"Welcome back, {savedUsername}!", "OK");
+            // Validate credentials
+            var accountService = new AccountService(); // Ensure AccountService is defined in Leap_App.Services
+            bool isValid = await accountService.ValidateAccountAsync(username, password);
 
-                // Navigate to HomePage
-                await Shell.Current.GoToAsync("//HomePage_Main");
+            if (isValid)
+            {
+                Preferences.Set("IsLoggedIn", true);
+                Preferences.Set("Username", username);
+                await DisplayAlert("Success", "Sign-in successful!", "OK");
+                await Shell.Current.GoToAsync("//MainHomePage");
+
             }
             else
             {
                 await DisplayAlert("Error", "Invalid username or password.", "OK");
             }
-        }
-
-        private async void OnSignUpClicked(object sender, EventArgs e)
-        {
         }
     }
 }

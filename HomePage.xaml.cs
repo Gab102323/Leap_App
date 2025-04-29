@@ -1,9 +1,18 @@
-﻿namespace Leap_App.Views;
+﻿using Leap_App.Services;
+namespace Leap_App.Views;
 public partial class HomePage : ContentPage
 {
     public HomePage()
     {
         InitializeComponent(); // Ensure this is present
+    }
+    private async void OnProfileIconClicked(object sender, EventArgs e)
+    {
+        string username = Preferences.Get("Username", "Guest");
+        var accountService = new AccountService();
+        var progress = await accountService.GetProgressAsync(username);
+
+        await DisplayAlert("Profile", $"Username: {username}\nProgress: {progress}%", "OK");
     }
     private void GoToHome(object sender, EventArgs e)
     {
@@ -19,26 +28,15 @@ public partial class HomePage : ContentPage
         Shell.Current.GoToAsync("//ObjectivePage");
     }
 
-        private async void GoToLeaderboard(object sender, EventArgs e)
-        {
-            // Navigate to the LeaderboardPage
-            await Navigation.PushAsync(new LeaderboardPage());
-        }
-    }
-    private async void OnProfileIconClicked(object sender, EventArgs e)
+    private async void GoToLeaderboard(object sender, EventArgs e)
     {
-        // Check if the user is logged in
-        bool isLoggedIn = Preferences.Get("IsLoggedIn", false);
-
-        if (!isLoggedIn)
-        {
-            // Navigate to SignInPage
-            await Shell.Current.GoToAsync("//SignInPage");
-        }
-        else
-        {
-            // Display user profile or account details
-            await DisplayAlert("Profile", $"Logged in as: {Preferences.Get("Username", "Guest")}", "OK");
-        }
+        // Navigate to the LeaderboardPage
+        await Navigation.PushAsync(new LeaderboardPage());
     }
-}
+    private async void OnSettingsClicked(object sender, EventArgs e)
+    {
+        // Navigate to the SettingsPage
+        await Shell.Current.GoToAsync("//SettingsPage");
+    }
+
+    }

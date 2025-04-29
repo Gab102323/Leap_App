@@ -17,15 +17,23 @@ namespace Leap_App
             // Delay navigation until the MainPage is fully initialized
             MainPage.Dispatcher.Dispatch(async () =>
             {
-                if (isLoggedIn)
+                try
                 {
-                    // Navigate to HomePage
-                    await Shell.Current.GoToAsync("//HomePage_Main");
+                    if (isLoggedIn)
+                    {
+                        // Navigate to HomePage using a relative route
+                        await Shell.Current.GoToAsync("HomePage_Main");
+                    }
+                    else
+                    {
+                        // Navigate to SignInPage using a relative route
+                        await Shell.Current.GoToAsync("SignInPage");
+                    }
                 }
-                else
+                catch (Exception ex)
                 {
-                    // Navigate to SignInPage
-                    await Shell.Current.GoToAsync("//SignInPage");
+                    // Handle navigation exceptions
+                    Console.WriteLine($"Navigation error: {ex.Message}");
                 }
             });
         }
