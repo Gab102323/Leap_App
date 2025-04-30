@@ -3,14 +3,6 @@
        xmlns:views="clr-namespace:Leap_App.Views"
        x:Class="Leap_App.AppShell">
 
-    <!-- Register Routes -->
-    <ShellContent Route="SignInPage" ContentTemplate="{DataTemplate views:SignInPage}" />
-    <ShellContent Route="SignUpPage" ContentTemplate="{DataTemplate views:SignUpPage}" />
-    <ShellContent Route="MainHomePage" ContentTemplate="{DataTemplate views:HomePage}" />
-    <ShellContent Route="LeaderboardPage" ContentTemplate="{DataTemplate views:LeaderboardPage}" />
-    <ShellContent Route="ObjectivePage" ContentTemplate="{DataTemplate views:ObjectivePage}" />
-    <ShellContent Route="ShopPage" ContentTemplate="{DataTemplate views:ShopPage}" />
-
     <!-- Tab Bar Navigation -->
     <TabBar>
         <ShellContent 
@@ -38,4 +30,7 @@
             ContentTemplate="{DataTemplate views:LeaderboardPage}" />
     </TabBar>
 
+    <!-- Register Additional Routes -->
+    <ShellContent Route="SignInPage" ContentTemplate="{DataTemplate views:SignInPage}" />
+    <ShellContent Route="SettingsPage" ContentTemplate="{DataTemplate views:SettingsPage}" />
 </Shell>

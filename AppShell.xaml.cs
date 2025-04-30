@@ -8,13 +8,14 @@ namespace Leap_App
         {
             InitializeComponent();
 
-            // Register routes
+            // Register unique routes
             Routing.RegisterRoute("SignInPage", typeof(SignInPage));
-            Routing.RegisterRoute("MainHomePage", typeof(HomePage));
+            Routing.RegisterRoute("MainHomePageRoute", typeof(HomePage)); // Use a unique route name
 
             Routing.RegisterRoute("ObjectivePage_Tab1", typeof(ObjectivePage));
             Routing.RegisterRoute("ShopPage_Tab1", typeof(ShopPage));
             Routing.RegisterRoute("LeaderboardPage_Tab1", typeof(LeaderboardPage));
         }
     }
+
 }

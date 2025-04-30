@@ -3,39 +3,44 @@
 namespace Leap_App
 {
     public partial class App : Application
-    {
-        public App()
+{
+        public partial class App : Application
         {
-            InitializeComponent();
-
-            // Set the MainPage to AppShell
-            MainPage = new AppShell();
-
-            // Check if the user is logged in
-            bool isLoggedIn = Preferences.Get("IsLoggedIn", false);
-
-            // Delay navigation until the MainPage is fully initialized
-            MainPage.Dispatcher.Dispatch(async () =>
+            public App()
             {
-                try
+                InitializeComponent();
+
+                // Set the MainPage to AppShell
+                MainPage = new AppShell();
+
+                // Check if the user is logged in
+                bool isLoggedIn = Preferences.Get("IsLoggedIn", false);
+                Console.WriteLine($"IsLoggedIn: {isLoggedIn}");
+
+                // Navigate based on login status
+                MainPage.Dispatcher.Dispatch(async () =>
                 {
-                    if (isLoggedIn)
+                    try
                     {
-                        // Navigate to HomePage using a relative route
-                        await Shell.Current.GoToAsync("HomePage_Main");
+                        if (isLoggedIn)
+                        {
+                            Console.WriteLine("Navigating to MainHomePage");
+                            await Shell.Current.GoToAsync("//MainHomePage");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Navigating to SignInPage");
+                            await Shell.Current.GoToAsync("//SignInPage");
+                        }
                     }
-                    else
+                    catch (Exception ex)
                     {
-                        // Navigate to SignInPage using a relative route
-                        await Shell.Current.GoToAsync("SignInPage");
+                        Console.WriteLine($"Navigation error: {ex.Message}");
                     }
-                }
-                catch (Exception ex)
-                {
-                    // Handle navigation exceptions
-                    Console.WriteLine($"Navigation error: {ex.Message}");
-                }
-            });
+                });
+            }
         }
+
     }
+
 }

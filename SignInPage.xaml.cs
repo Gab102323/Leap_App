@@ -34,7 +34,8 @@ namespace Leap_App.Views
                 Preferences.Set("IsLoggedIn", true);
                 Preferences.Set("Username", username);
                 await DisplayAlert("Success", "Sign-in successful!", "OK");
-                await Shell.Current.GoToAsync("//MainHomePage");
+                await Shell.Current.GoToAsync("MainHomePageRoute");
+
 
             }
             else
